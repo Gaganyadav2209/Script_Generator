@@ -14,27 +14,27 @@ client = Groq(
 )
 
 
-def perpex_score(text):
-    # Tokenize the text using tiktoken
-    tokens = sent_tokenize(text)
-    # Calculate the total number of tokens
-    total_tokens = len(tokens)
-    # Create a dictionary to count the frequency of each token
-    token_freq = {}
-    for token in tokens:
-       if token in token_freq:
-          token_freq[token] += 1
-       else:
-         token_freq[token] = 1
-    # Calculate the probability of each token
-    token_probabilities = {token: freq / total_tokens for token, freq in token_freq.items()}
-    # Calculate the text probability by multiplying the probabilities of each token
-    text_probability = 1.0
-    for token in tokens:
-       text_probability *= token_probabilities[token]
-    # Calculate the perplexity using the formula
-    perplexity = math.pow(text_probability, -1/total_tokens)
-    return perplexity
+# def perpex_score(text):
+#     # Tokenize the text using tiktoken
+#     tokens = sent_tokenize(text)
+#     # Calculate the total number of tokens
+#     total_tokens = len(tokens)
+#     # Create a dictionary to count the frequency of each token
+#     token_freq = {}
+#     for token in tokens:
+#        if token in token_freq:
+#           token_freq[token] += 1
+#        else:
+#          token_freq[token] = 1
+#     # Calculate the probability of each token
+#     token_probabilities = {token: freq / total_tokens for token, freq in token_freq.items()}
+#     # Calculate the text probability by multiplying the probabilities of each token
+#     text_probability = 1.0
+#     for token in tokens:
+#        text_probability *= token_probabilities[token]
+#     # Calculate the perplexity using the formula
+#     perplexity = math.pow(text_probability, -1/total_tokens)
+#     return perplexity
     
 
 st.set_page_config(page_title="Content Script Generator")
@@ -178,8 +178,8 @@ if st.button("Submit"):
        else:   
          resp = response_llm(user_prompt)
          st.write(resp)
-         score = perpex_score(resp)
-         st.write(score)
+         # score = perpex_score(resp)
+         # st.write(score)
 
     
     
@@ -193,8 +193,8 @@ with st.sidebar:
     if st.button("Try Now"):
          resp = response_llm("Generate a script for long format video ranging around 10-15 minutes on the topic - How to start online cloth retail store")  
          st.write(resp)
-         score = perpex_score(resp)
-         st.write(score)
+         # score = perpex_score(resp)
+         # st.write(score)
          
 
    

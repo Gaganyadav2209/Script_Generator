@@ -2,5 +2,5 @@ streamlit
 groq
 tiktoken
 nltk
-dotenv
-math
+python-dotenv
+

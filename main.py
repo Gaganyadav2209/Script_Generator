@@ -13,6 +13,12 @@ client = Groq(
     api_key=st.secrets["Groq_API_KEY"],
 )
 
+hide_icon = """
+#MainMenu {
+  visibility: hidden;
+} 
+"""
+st.markdown(hide_icon, unsafe_allow_html=True)
 
 # def perpex_score(text):
 #     # Tokenize the text using tiktoken
